@@ -1,8 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const ctrls = require('../controllers')
+const ctrls = require("../controllers");
 
-router.get('/', ctrls.selfies.index)
+router.get("/", ctrls.selfies.index);
 
-module.exports = router
+router.post("/", ctrls.selfies.create);
+
+module.exports = router;
