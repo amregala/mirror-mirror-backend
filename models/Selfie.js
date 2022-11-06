@@ -8,6 +8,7 @@ const selfieSchema = new schema({
   imgMedium: { type: String, default: "unknown" },
   likes: { type: String, default: 0 },
   tags: [{ type: String }],
+  creditLine: { type: String }
   //   year: { type: String, required: true },
 });
 

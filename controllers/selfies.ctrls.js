@@ -20,7 +20,19 @@ const create = (req, res) => {
   });
 };
 
+/* Destroy Controller */
+const destroy = (req, res) => {
+    db.Selfie.findByIdAndDelete(req.params.id, (error, deletedSelfie) => {
+        if (error) return res.status(400).json({ error: error.message});
+
+        return res.status(200).json({
+            message: `Selfie ${deletedSelfie.name} deleted successfully`
+        });
+    });
+};
+
 module.exports = {
   index,
   create,
+  destroy
 };
