@@ -17,7 +17,12 @@ const port = process.env.PORT;
 const app = express();
 
 /* == DB connection == */
-require("./config/db.connection");
+require('./config/db.connection');
+
+/* == middlewares == */
+// Middleware telling express to expect JSON data in the body from AJAX
+app.use(express.urlencoded({extended: true}))
+app.use(express.json());
 
 /* == Routes == */
 // app.get("/", (req, res) => {
