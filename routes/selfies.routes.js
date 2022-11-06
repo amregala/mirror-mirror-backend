@@ -7,6 +7,8 @@ router.get("/", ctrls.selfies.index);
 
 router.post("/", ctrls.selfies.create);
 
-router.delete('/:id', ctrls.selfies.destroy);
+router.put("/:id", ctrls.selfies.update);
+
+router.delete("/:id", ctrls.selfies.destroy);
 
 module.exports = router;
