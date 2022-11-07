@@ -1,3 +1,4 @@
 module.exports = {
-    selfies: require('./selfies.ctrls.js')
+    selfies: require('./selfies.ctrls.js'),
+    users: require('./users.ctrls.js')
 }
