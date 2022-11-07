@@ -1,6 +1,9 @@
 {
   "name": "mirror-mirror-backend",
   "version": "1.0.0",
+  "engines": {
+    "node": "18.11.0"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -19,8 +22,12 @@
   },
   "homepage": "https://github.com/amregala/mirror-mirror-backend#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-mongodb-session": "^3.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "mongoose": "^6.7.1"
   }
 }
