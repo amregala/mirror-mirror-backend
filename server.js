@@ -7,7 +7,7 @@ const express = require("express");
 const routes = require("./routes");
 
 /* == cors == */
-const cors = require('cors');
+const cors = require("cors");
 
 /* == express-session == */
 const session = require("express-session");
@@ -30,25 +30,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Cors Middleware
-const whitelist = ['http://localhost:3000', `${process.env.FRONTEND_URL}`];
+const whitelist = ["http://localhost:3000", `${process.env.FRONTEND_URL}`];
 const corsOptions = {
-	origin: (origin, callback) => {
-		console.log(whitelist, "WHITELIST")
-		console.log(origin, "ORIGIN")
-		if (whitelist.indexOf(origin) !== -1 || !origin) {
-			callback(null, true);
-		} else {
-			callback(new Error('Not allowed by CORS'));
-		}
-	},
-	// This is needed for accept credentials from the front-end
-	// not needed if you are not implementing authentication
-	credentials: true,
+  origin: (origin, callback) => {
+    console.log("WHITELIST", whitelist);
+    console.log("ORIGIN", origin);
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  // This is needed for accept credentials from the front-end
+  // not needed if you are not implementing authentication
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
 
-app.set('trust proxy', 1) // trust first proxy
+app.set("trust proxy", 1); // trust first proxy
 
 // Sessions
 // const SESSION_SECRET = process.env.SESSION_SECRET;
@@ -83,7 +83,7 @@ app.get("/", (req, res) => {
 });
 
 /* == Route == */
-app.use("/selfies", isAuthenticated, routes.selfies);
+app.use("/selfies", routes.selfies);
 app.use("/users", routes.users);
 
 /* == Server Bind == */
