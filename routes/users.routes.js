@@ -1,13 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const ctrls = require('../controllers');
+const ctrls = require("../controllers");
 
-router.post('/signup', ctrls.users.signup);
+router.post("/signup", ctrls.users.signup);
 
-router.post('/login', ctrls.users.login);
+router.post("/login", ctrls.users.login);
 
-router.delete('/logout', ctrls.users.logout);
+router.delete("/logout", ctrls.users.logout);
 
 
 module.exports = router;
