@@ -18,16 +18,13 @@ const PORT = process.env.PORT;
 // MongoDBStore for sessions
 const MongoDBStore = require("connect-mongodb-session")(session);
 
-/* == Express Instance == */
+/* == Express Instance// Creating the express app == */
 const app = express();
 
 /* == DB connection == */
 require("./config/db.connection");
 
 /* == middlewares == */
-// Middleware telling express to expect JSON data in the body from AJAX
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 // Cors Middleware
 const whitelist = ["http://localhost:3000", `${process.env.FRONTEND_URL}`];
@@ -46,6 +43,7 @@ const corsOptions = {
   credentials: true,
 };
 
+// Enablabling CORS Requests
 app.use(cors(corsOptions));
 
 app.set("trust proxy", 1); // trust first proxy
@@ -55,6 +53,7 @@ app.set("trust proxy", 1); // trust first proxy
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
+    // name: "mirror-mirror-cookie",
     resave: false,
     saveUninitialized: false,
     store: new MongoDBStore({
@@ -76,6 +75,10 @@ const isAuthenticated = (req, res, next) => {
   }
 };
 
+// request body JSON parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 /* == Default Route == */
 app.get("/", (req, res) => {
   console.log("pew pew pew");
@@ -83,8 +86,11 @@ app.get("/", (req, res) => {
 });
 
 /* == Route == */
+// app.use("/selfies", isAuthenticated, routes.selfies);
 app.use("/selfies", routes.selfies);
 app.use("/users", routes.users);
+
+
 
 /* == Server Bind == */
 app.listen(PORT, () => {
