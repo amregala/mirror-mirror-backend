@@ -31,7 +31,7 @@ const update = (req, res) => {
     (error, updatedSelfie) => {
       if (error) return res.status(400).json({ error: error.message });
 
-      return res.status(200).json(updatedSelfie)
+      return res.status(200).json(updatedSelfie);
     }
   );
 };
