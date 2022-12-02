@@ -5,6 +5,8 @@ const ctrls = require("../controllers");
 
 router.get("/", ctrls.selfies.index);
 
+router.get("/one", ctrls.selfies.one)
+
 router.post("/", ctrls.selfies.create);
 
 router.put("/:id", ctrls.selfies.update);
