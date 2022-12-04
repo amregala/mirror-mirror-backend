@@ -14,16 +14,17 @@ const index = (req, res) => {
   });
 };
 
-// const one = (req, res) => {
-//   db.Selfie.findOne({ title: "Gustave" }, (error, found) => {
-//     if (error) return res.status(404).json({ error: error.message });
+/* Find One Test Controller */
+const one = (req, res) => {
+  db.Selfie.findOne({ title: "Gustave" }, (error, found) => {
+    if (error) return res.status(404).json({ error: error.message });
 
-//     return res.status(200).json({
-//       found,
-//       requestedAt: new Date().toLocaleString,
-//     });
-//   });
-// };
+    return res.status(200).json({
+      found,
+      requestedAt: new Date().toLocaleString,
+    });
+  });
+};
 
 /* Create Controller */
 const create = (req, res) => {
